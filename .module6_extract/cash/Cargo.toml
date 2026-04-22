@@ -1,0 +1,64 @@
+[package]
+name = "cash"
+version = "0.1.0"
+edition = "2021"
+authors = ["Personal Studio Limited"]
+description = "cash — Conscious Adaptive Secure Host"
+
+[[bin]]
+name = "cash"
+path = "src/main.rs"
+
+[dependencies]
+# --- serialisation & config ---
+serde         = { version = "1",    features = ["derive"] }
+serde_json    = "1"
+toml          = "0.8"
+
+# --- database ---
+rusqlite      = { version = "0.31", features = ["bundled"] }
+
+# --- async runtime (Security Engine thread pool) ---
+tokio         = { version = "1",    features = ["full"] }
+
+# --- terminal / prompt ---
+crossterm     = "0.27"
+
+# --- fuzzy matching (Resolver) ---
+fuzzy-matcher = "0.3"
+
+# --- hashing (tamper detection, vault) ---
+sha2          = "0.10"
+hex           = "0.4"
+
+# --- time ---
+chrono        = { version = "0.4",  features = ["serde"] }
+
+# --- errors ---
+anyhow        = "1"
+thiserror     = "1"
+
+# --- logging (internal, never user-facing) ---
+tracing             = "0.1"
+tracing-subscriber  = { version = "0.3", features = ["env-filter"] }
+
+# --- directories (resolve ~/.cash/) ---
+dirs          = "5"
+
+# --- signal handling ---
+
+# --- Unix syscalls (fork, exec, wait, pipe, dup2, signals) ---
+
+# --- pin transitive deps to versions Rust 1.75 can parse ---
+indexmap      = "=2.2.6"
+hashbrown     = "=0.14.5"
+tempfile      = { version = "3", features = [] }
+
+[profile.release]
+opt-level = 3
+strip     = true
+lto       = true
+
+[target.'cfg(unix)'.dependencies]
+nix         = { version = "0.27", features = ["process", "signal", "fs", "term"] }
+signal-hook = "0.3"
