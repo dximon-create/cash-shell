@@ -5,7 +5,7 @@ use super::{
     parser::{parse, ParseResult},
     prompt,
 };
-use crate::store::{history, config};
+use crate::store::{audit, audit::CommandKind, history, config};
 
 pub fn run(shell: &mut super::Shell) -> anyhow::Result<()> {
     let mut out = io::stdout();
