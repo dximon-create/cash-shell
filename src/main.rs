@@ -2,6 +2,7 @@
 // © Personal Studio Limited — Confidential
 
 mod agents;
+mod marketplace;
 mod security;
 mod shell;
 mod store;
