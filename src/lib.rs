@@ -1,0 +1,7 @@
+// cash — library root for integration tests
+
+pub mod agents;
+pub mod marketplace;
+pub mod security;
+pub mod shell;
+pub mod store;

@@ -62,3 +62,7 @@ lto       = true
 [target.'cfg(unix)'.dependencies]
 nix         = { version = "0.27", features = ["process", "signal", "fs", "term"] }
 signal-hook = "0.3"
+
+[lib]
+name = "cash"
+path = "src/lib.rs"

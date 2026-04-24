@@ -42,4 +42,16 @@ impl Store {
     pub fn config_path(&self) -> PathBuf {
         self.root.join("config.toml")
     }
+
+    /// Open a store at a specific path (used in tests).
+    pub fn open_at(root: &std::path::Path) -> anyhow::Result<Self> {
+        std::fs::create_dir_all(root)?;
+        let store = Self { root: root.to_path_buf() };
+        config::init(&store)?;
+        history::init(&store)?;
+        memory::init(&store)?;
+        audit::init(&store)?;
+        Ok(store)
+    }
 }
+
