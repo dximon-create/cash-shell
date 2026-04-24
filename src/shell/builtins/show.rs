@@ -41,11 +41,18 @@ pub fn run(stage: &Stage, cwd: &Path) -> BuiltinResult {
         }
     };
 
-    let mut items: Vec<DirItem> = entries
+    // Collect entries, counting any that fail to read.
+    let all_entries: Vec<_> = entries.collect();
+    let read_errors = all_entries.iter().filter(|e| e.is_err()).count();
+    let mut items: Vec<DirItem> = all_entries
+        .into_iter()
         .filter_map(|e| e.ok())
         .filter_map(|e| DirItem::from_entry(&e).ok())
         .filter(|item| show_hidden || !item.name.starts_with('.'))
         .collect();
+    if read_errors > 0 {
+        eprintln!("show: {} entr{} could not be read", read_errors, if read_errors == 1 { "y" } else { "ies" });
+    }
 
     items.sort_by(|a, b| {
         // Directories first, then alphabetical.

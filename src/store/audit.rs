@@ -178,7 +178,9 @@ fn row_to_entry(row: &rusqlite::Row) -> rusqlite::Result<AuditEntry> {
 }
 
 fn open(store: &Store) -> anyhow::Result<Connection> {
-    Ok(Connection::open(store.db_path("audit.db"))?)
+    let c = Connection::open(store.db_path("audit.db"))?;
+    c.busy_timeout(std::time::Duration::from_secs(5))?;
+    Ok(c)
 }
 
 #[cfg(test)]

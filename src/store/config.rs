@@ -46,7 +46,13 @@ fn default_prompt_style()  -> String { "default".into() }
 pub fn load(root: &Path) -> Config {
     let path = root.join("config.toml");
     let Ok(text) = std::fs::read_to_string(&path) else { return Config::default() };
-    toml::from_str(&text).unwrap_or_default()
+    match toml::from_str(&text) {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("cash: config.toml parse error: {} — using defaults", e);
+            Config::default()
+        }
+    }
 }
 
 /// Write config to disk.

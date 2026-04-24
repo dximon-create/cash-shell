@@ -118,7 +118,9 @@ fn row_to_memory(row: &rusqlite::Row) -> rusqlite::Result<Memory> {
 }
 
 fn open(store: &Store) -> anyhow::Result<Connection> {
-    Ok(Connection::open(store.db_path("memory.db"))?)
+    let c = Connection::open(store.db_path("memory.db"))?;
+    c.busy_timeout(std::time::Duration::from_secs(5))?;
+    Ok(c)
 }
 
 #[cfg(test)]

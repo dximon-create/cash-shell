@@ -52,11 +52,18 @@ pub fn push(
     let conn = open(store)?;
 
     if dedup {
-        let last: Option<String> = conn.query_row(
+        let last: Option<String> = match conn.query_row(
             "SELECT command FROM history ORDER BY id DESC LIMIT 1",
             [],
             |row| row.get(0),
-        ).ok();
+        ) {
+            Ok(v) => Some(v),
+            Err(rusqlite::Error::QueryReturnedNoRows) => None,
+            Err(e) => {
+                tracing::warn!("history dedup query failed: {}", e);
+                None // allow write on DB error rather than silently skip
+            }
+        };
         if last.as_deref() == Some(trimmed) {
             return Ok(());
         }
@@ -127,7 +134,9 @@ pub fn trim(store: &Store, limit: usize) -> anyhow::Result<()> {
 }
 
 fn open(store: &Store) -> anyhow::Result<Connection> {
-    Ok(Connection::open(store.db_path("history.db"))?)
+    let c = Connection::open(store.db_path("history.db"))?;
+    c.busy_timeout(std::time::Duration::from_secs(5))?;
+    Ok(c)
 }
 
 #[cfg(test)]
