@@ -41,3 +41,9 @@ fn generate_session_id() -> String {
     let pid = std::process::id();
     format!("{}-{}", ts, pid)
 }
+
+pub mod completion;
+pub mod highlight;
+pub mod history_search;
+pub mod intent;
+pub mod jobs;
