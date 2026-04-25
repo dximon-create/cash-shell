@@ -19,6 +19,19 @@ mod shell;
 mod store;
 
 fn main() -> anyhow::Result<()> {
+    // Windows native: warn user and suggest WSL.
+    #[cfg(target_os = "windows")]
+    {
+        eprintln!("╔══ cash on Windows ══");
+        eprintln!("║");
+        eprintln!("║  Full shell features require Unix/WSL.");
+        eprintln!("║  Running in limited mode — built-ins only.");
+        eprintln!("║");
+        eprintln!("║  For full features: open PowerShell and type 'wsl'");
+        eprintln!("║  then run cash from your WSL terminal.");
+        eprintln!("╚══
+");
+    }
     // Internal tracing — set CASH_LOG=debug to see output.
     tracing_subscriber::fmt()
         .with_env_filter(tracing_subscriber::EnvFilter::from_env("CASH_LOG"))
