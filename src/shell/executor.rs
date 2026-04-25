@@ -121,9 +121,15 @@ mod unix {
                         eprintln!("cash: {}", e);
                         std::process::exit(1);
                     }
-                    let _ = execvpe(&bin, &argv, &envp);
-                    eprintln!("cash: {}: command not found", stage.name);
-                    std::process::exit(127);
+                    let err = execvpe(&bin, &argv, &envp).unwrap_err();
+                    match err {
+                        nix::Error::ENOENT  => eprintln!("cash: {}: command not found", stage.name),
+                        nix::Error::EACCES  => eprintln!("cash: {}: permission denied", stage.name),
+                        nix::Error::ENOEXEC => eprintln!("cash: {}: not an executable", stage.name),
+                        nix::Error::EISDIR  => eprintln!("cash: {}: is a directory", stage.name),
+                        other               => eprintln!("cash: {}: {}", stage.name, other),
+                    }
+                    std::process::exit(126);
                 }
                 ForkResult::Parent { child } => { pids.push(child); }
             }
