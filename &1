@@ -1,0 +1,2123 @@
+warning: unused manifest key: lib.libc
+warning: unused import: `IpAddr`
+ --> src/toolkit/scan.rs:7:42
+  |
+7 | use std::net::{TcpStream, ToSocketAddrs, IpAddr, Ipv4Addr};
+  |                                          ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::path::Path`
+  --> src/security/network_monitor.rs:10:5
+   |
+10 | use std::path::Path;
+   |     ^^^^^^^^^^^^^^^
+
+warning: unused imports: `PathBuf` and `Path`
+  --> src/shell/completion.rs:10:17
+   |
+10 | use std::path::{Path, PathBuf};
+   |                 ^^^^  ^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+  --> src/shell/intent.rs:11:5
+   |
+11 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `command`
+  --> src/tools/runner.rs:97:43
+   |
+97 |     fn check_installed(&self, tool: &str, command: &str) -> bool {
+   |                                           ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_command`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `tool`
+   --> src/tools/formatter.rs:117:37
+    |
+117 |     pub fn raw_output(output: &str, tool: &str) {
+    |                                     ^^^^ help: if this is intentional, prefix it with an underscore: `_tool`
+
+warning: unused variable: `store`
+  --> src/security/mod.rs:88:25
+   |
+88 |                     let store = crate::store::Store { root: dir.clone() };
+   |                         ^^^^^ help: if this is intentional, prefix it with an underscore: `_store`
+
+warning: unused variable: `name_width`
+  --> src/shell/builtins/show.rs:67:9
+   |
+67 |     let name_width = items.iter().map(|i| i.name.len()).max().unwrap_or(0).min(40);
+   |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_name_width`
+
+warning: unused variable: `reason`
+  --> src/shell/eval.rs:83:33
+   |
+83 |             Decision::Approve { reason } => {
+   |                                 ^^^^^^ help: try ignoring the field: `reason: _`
+
+   Compiling cash v0.1.0 (/home/imon/cash)
+warning: `cash` (lib) generated 9 warnings (run `cargo fix --lib -p cash` to apply 9 suggestions)
+warning: unused imports: `AgentPermission`, `AgentState`, and `Agent`
+  --> src/agents/mod.rs:18:17
+   |
+18 | pub use agent::{Agent, AgentState, AgentPermission};
+   |                 ^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `memory::SharedMemory`
+  --> src/agents/mod.rs:20:9
+   |
+20 | pub use memory::SharedMemory;
+   |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `bus::MessageBus`
+  --> src/agents/mod.rs:21:9
+   |
+21 | pub use bus::MessageBus;
+   |         ^^^^^^^^^^^^^^^
+
+warning: unused import: `ActionKind`
+  --> src/policy/mod.rs:17:26
+   |
+17 | pub use action::{Action, ActionKind};
+   |                          ^^^^^^^^^^
+
+warning: unused import: `risk::RiskScorer`
+  --> src/policy/mod.rs:19:9
+   |
+19 | pub use risk::RiskScorer;
+   |         ^^^^^^^^^^^^^^^^
+
+warning: unused import: `approval::ApprovalPrompt`
+  --> src/policy/mod.rs:20:9
+   |
+20 | pub use approval::ApprovalPrompt;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `installer::ToolInstaller`
+  --> src/tools/mod.rs:20:9
+   |
+20 | pub use installer::ToolInstaller;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `ToolRecord` and `ToolRegistry`
+  --> src/tools/mod.rs:21:20
+   |
+21 | pub use registry::{ToolRegistry, ToolRecord};
+   |                    ^^^^^^^^^^^^  ^^^^^^^^^^
+
+warning: unused import: `runner::ToolRunner`
+  --> src/tools/mod.rs:22:9
+   |
+22 | pub use runner::ToolRunner;
+   |         ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `formatter::OutputFormatter`
+  --> src/tools/mod.rs:23:9
+   |
+23 | pub use formatter::OutputFormatter;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `IpAddr`
+ --> src/toolkit/scan.rs:7:42
+  |
+7 | use std::net::{TcpStream, ToSocketAddrs, IpAddr, Ipv4Addr};
+  |                                          ^^^^^^
+
+warning: unused import: `learn::LearningMode`
+  --> src/toolkit/mod.rs:20:9
+   |
+20 | pub use learn::LearningMode;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `InstalledAgent` and `MarketplaceRegistry`
+  --> src/marketplace/mod.rs:17:20
+   |
+17 | pub use registry::{MarketplaceRegistry, InstalledAgent};
+   |                    ^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^
+
+warning: unused import: `installer::Installer`
+  --> src/marketplace/mod.rs:18:9
+   |
+18 | pub use installer::Installer;
+   |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `verifier::Verifier`
+  --> src/marketplace/mod.rs:19:9
+   |
+19 | pub use verifier::Verifier;
+   |         ^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `AlertLevel`
+  --> src/security/mod.rs:18:30
+   |
+18 | pub use alert::{AlertSystem, AlertLevel};
+   |                              ^^^^^^^^^^
+
+warning: unused import: `vault_inner::Vault`
+  --> src/security/mod.rs:30:9
+   |
+30 | pub use vault_inner::Vault;
+   |         ^^^^^^^^^^^^^^^^^^
+
+warning: variants `Idle`, `Running`, `Paused`, `Completed`, and `Terminated` are never constructed
+  --> src/agents/agent.rs:12:5
+   |
+10 | pub enum AgentState {
+   |          ---------- variants in this enum
+11 |     /// Agent is registered but not yet started.
+12 |     Idle,
+   |     ^^^^
+13 |     /// Agent is actively running.
+14 |     Running,
+   |     ^^^^^^^
+15 |     /// Agent is paused — can be resumed.
+16 |     Paused,
+   |     ^^^^^^
+17 |     /// Agent has finished cleanly.
+18 |     Completed,
+   |     ^^^^^^^^^
+19 |     /// Agent was stopped due to error or policy violation.
+20 |     Terminated { reason: String },
+   |     ^^^^^^^^^^
+   |
+   = note: `AgentState` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: multiple variants are never constructed
+  --> src/agents/agent.rs:26:5
+   |
+24 | pub enum AgentPermission {
+   |          --------------- variants in this enum
+25 |     /// Can read files.
+26 |     ReadFiles,
+   |     ^^^^^^^^^
+27 |     /// Can write files.
+28 |     WriteFiles,
+   |     ^^^^^^^^^^
+29 |     /// Can run shell commands.
+30 |     RunCommands,
+   |     ^^^^^^^^^^^
+31 |     /// Can make network requests.
+32 |     Network,
+   |     ^^^^^^^
+33 |     /// Can read from shared memory.
+34 |     SharedMemoryRead,
+   |     ^^^^^^^^^^^^^^^^
+35 |     /// Can write to shared memory.
+36 |     SharedMemoryWrite,
+   |     ^^^^^^^^^^^^^^^^^
+37 |     /// Can send messages to other agents.
+38 |     Messaging,
+   |     ^^^^^^^^^
+39 |     /// Can spawn child agents.
+40 |     SpawnAgents,
+   |     ^^^^^^^^^^^
+   |
+   = note: `AgentPermission` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple fields are never read
+  --> src/agents/agent.rs:46:9
+   |
+44 | pub struct Agent {
+   |            ----- fields in this struct
+45 |     /// Unique agent ID.
+46 |     pub id:           String,
+   |         ^^
+47 |     /// Human-readable name.
+48 |     pub name:         String,
+   |         ^^^^
+49 |     /// Version string.
+50 |     pub version:      String,
+   |         ^^^^^^^
+51 |     /// What this agent is allowed to do.
+52 |     pub permissions:  HashSet<AgentPermission>,
+   |         ^^^^^^^^^^^
+53 |     /// Current lifecycle state.
+54 |     pub state:        AgentState,
+   |         ^^^^^
+55 |     /// When this agent was registered.
+56 |     pub registered_at: String,
+   |         ^^^^^^^^^^^^^
+57 |     /// Trust score (0.0 = untrusted, 10.0 = fully trusted).
+58 |     pub trust_score:  f64,
+   |         ^^^^^^^^^^^
+59 |     /// Agent-specific metadata (key/value).
+60 |     pub metadata:     std::collections::HashMap<String, String>,
+   |         ^^^^^^^^
+   |
+   = note: `Agent` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple associated items are never used
+   --> src/agents/agent.rs:64:12
+    |
+ 63 | impl Agent {
+    | ---------- associated items in this implementation
+ 64 |     pub fn new(id: &str, name: &str, version: &str, permissions: Vec<AgentPermission>) -> Self {
+    |            ^^^
+...
+ 77 |     pub fn has_permission(&self, perm: &AgentPermission) -> bool {
+    |            ^^^^^^^^^^^^^^
+...
+ 81 |     pub fn is_running(&self) -> bool {
+    |            ^^^^^^^^^^
+...
+ 85 |     pub fn start(&mut self) -> Result<(), String> {
+    |            ^^^^^
+...
+ 95 |     pub fn pause(&mut self) -> Result<(), String> {
+    |            ^^^^^
+...
+104 |     pub fn terminate(&mut self, reason: &str) {
+    |            ^^^^^^^^^
+...
+108 |     pub fn complete(&mut self) {
+    |            ^^^^^^^^
+
+warning: fields `from`, `to`, `topic`, and `payload` are never read
+  --> src/agents/bus.rs:13:9
+   |
+12 | pub struct Message {
+   |            ------- fields in this struct
+13 |     pub from:    String,
+   |         ^^^^
+14 |     pub to:      String,
+   |         ^^
+15 |     pub topic:   String,
+   |         ^^^^^
+16 |     pub payload: String,
+   |         ^^^^^^^
+   |
+   = note: `Message` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: associated function `new` is never used
+  --> src/agents/bus.rs:20:12
+   |
+19 | impl Message {
+   | ------------ associated function in this implementation
+20 |     pub fn new(from: &str, to: &str, topic: &str, payload: &str) -> Self {
+   |            ^^^
+
+warning: field `senders` is never read
+  --> src/agents/bus.rs:31:5
+   |
+30 | pub struct MessageBus {
+   |            ---------- field in this struct
+31 |     senders: Arc<Mutex<HashMap<String, Sender<Message>>>>,
+   |     ^^^^^^^
+
+warning: methods `subscribe`, `send`, `unsubscribe`, and `subscriber_count` are never used
+  --> src/agents/bus.rs:42:12
+   |
+34 | impl MessageBus {
+   | --------------- methods in this implementation
+...
+42 |     pub fn subscribe(&self, agent_id: &str) -> Receiver<Message> {
+   |            ^^^^^^^^^
+...
+49 |     pub fn send(&self, msg: Message) -> Result<(), String> {
+   |            ^^^^
+...
+58 |     pub fn unsubscribe(&self, agent_id: &str) {
+   |            ^^^^^^^^^^^
+...
+62 |     pub fn subscriber_count(&self) -> usize {
+   |            ^^^^^^^^^^^^^^^^
+
+warning: field `store` is never read
+  --> src/agents/memory.rs:12:5
+   |
+11 | pub struct SharedMemory {
+   |            ------------ field in this struct
+12 |     store: Arc<RwLock<HashMap<String, String>>>,
+   |     ^^^^^
+   |
+   = note: `SharedMemory` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `set`, `get`, `delete`, `keys`, `len`, and `is_empty` are never used
+  --> src/agents/memory.rs:22:12
+   |
+15 | impl SharedMemory {
+   | ----------------- methods in this implementation
+...
+22 |     pub fn set(&self, key: &str, value: &str) {
+   |            ^^^
+...
+26 |     pub fn get(&self, key: &str) -> Option<String> {
+   |            ^^^
+...
+30 |     pub fn delete(&self, key: &str) -> bool {
+   |            ^^^^^^
+...
+34 |     pub fn keys(&self) -> Vec<String> {
+   |            ^^^^
+...
+38 |     pub fn len(&self) -> usize {
+   |            ^^^
+...
+42 |     pub fn is_empty(&self) -> bool {
+   |            ^^^^^^^^
+
+warning: fields `agents`, `bus`, and `memory` are never read
+  --> src/agents/runtime.rs:14:5
+   |
+13 | pub struct AgentRuntime {
+   |            ------------ fields in this struct
+14 |     agents:  Arc<Mutex<HashMap<String, Agent>>>,
+   |     ^^^^^^
+15 |     bus:     Arc<MessageBus>,
+   |     ^^^
+16 |     memory:  SharedMemory,
+   |     ^^^^^^
+
+warning: multiple methods are never used
+   --> src/agents/runtime.rs:29:12
+    |
+ 19 | impl AgentRuntime {
+    | ----------------- methods in this implementation
+...
+ 29 |     pub fn register(&self, agent: Agent) -> Result<(), String> {
+    |            ^^^^^^^^
+...
+ 39 |     pub fn start(&self, agent_id: &str) -> Result<(), String> {
+    |            ^^^^^
+...
+ 47 |     pub fn pause(&self, agent_id: &str) -> Result<(), String> {
+    |            ^^^^^
+...
+ 55 |     pub fn terminate(&self, agent_id: &str, reason: &str) {
+    |            ^^^^^^^^^
+...
+ 63 |     pub fn send_message(&self, msg: Message) -> Result<(), String> {
+    |            ^^^^^^^^^^^^
+...
+ 79 |     pub fn mem_read(&self, agent_id: &str, key: &str) -> Result<Option<String>, String> {
+    |            ^^^^^^^^
+...
+ 90 |     pub fn mem_write(&self, agent_id: &str, key: &str, value: &str) -> Result<(), String> {
+    |            ^^^^^^^^^
+...
+102 |     pub fn agent_count(&self) -> usize {
+    |            ^^^^^^^^^^^
+...
+106 |     pub fn running_count(&self) -> usize {
+    |            ^^^^^^^^^^^^^
+...
+113 |     pub fn bus(&self) -> Arc<MessageBus> {
+    |            ^^^
+
+warning: multiple variants are never constructed
+  --> src/policy/action.rs:30:5
+   |
+15 | pub enum ActionKind {
+   |          ---------- variants in this enum
+...
+30 |     StopService,
+   |     ^^^^^^^^^^^
+...
+35 |     OpenPort,
+   |     ^^^^^^^^
+36 |     ClosePort,
+   |     ^^^^^^^^^
+37 |     DnsLookup,
+   |     ^^^^^^^^^
+...
+42 |     UninstallPackage,
+   |     ^^^^^^^^^^^^^^^^
+43 |     UpdatePackage,
+   |     ^^^^^^^^^^^^^
+44 |     InstallAgent,
+   |     ^^^^^^^^^^^^
+...
+49 |     EditConfig,
+   |     ^^^^^^^^^^
+50 |     ReadEnvVars,
+   |     ^^^^^^^^^^^
+51 |     WriteEnvVars,
+   |     ^^^^^^^^^^^^
+...
+54 |     ReadAuditLog,
+   |     ^^^^^^^^^^^^
+55 |     ScanNetwork,
+   |     ^^^^^^^^^^^
+56 |     CheckVulnerabilities,
+   |     ^^^^^^^^^^^^^^^^^^^^
+57 |     RunInSandbox,
+   |     ^^^^^^^^^^^^
+...
+60 |     SetEnvVar,
+   |     ^^^^^^^^^
+...
+65 |     Unknown,
+   |     ^^^^^^^
+   |
+   = note: `ActionKind` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `id` and `params` are never read
+   --> src/policy/action.rs:139:9
+    |
+138 | pub struct Action {
+    |            ------ fields in this struct
+139 |     pub id:          String,
+    |         ^^
+...
+142 |     pub params:      HashMap<String, String>,
+    |         ^^^^^^
+    |
+    = note: `Action` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `with_param` is never used
+   --> src/policy/action.rs:170:12
+    |
+148 | impl Action {
+    | ----------- method in this implementation
+...
+170 |     pub fn with_param(mut self, key: &str, value: &str) -> Self {
+    |            ^^^^^^^^^^
+
+warning: struct `Plan` is never constructed
+   --> src/policy/action.rs:187:12
+    |
+187 | pub struct Plan {
+    |            ^^^^
+
+warning: associated items `new` and `max_risk` are never used
+   --> src/policy/action.rs:195:12
+    |
+194 | impl Plan {
+    | --------- associated items in this implementation
+195 |     pub fn new(intent: &str, actions: Vec<Action>) -> Self {
+    |            ^^^
+...
+204 |     pub fn max_risk(&self) -> f64 {
+    |            ^^^^^^^^
+
+warning: methods `label`, `is_blocked`, and `needs_approval` are never used
+  --> src/policy/engine.rs:22:12
+   |
+21 | impl Decision {
+   | ------------- methods in this implementation
+22 |     pub fn label(&self) -> &str {
+   |            ^^^^^
+...
+31 |     pub fn is_blocked(&self) -> bool {
+   |            ^^^^^^^^^^
+...
+35 |     pub fn needs_approval(&self) -> bool {
+   |            ^^^^^^^^^^^^^^
+
+warning: associated function `strict` is never used
+  --> src/policy/engine.rs:49:12
+   |
+44 | impl PolicyEngine {
+   | ----------------- associated function in this implementation
+...
+49 |     pub fn strict() -> Self {
+   |            ^^^^^^
+
+warning: constant `GREEN` is never used
+  --> src/policy/approval.rs:14:7
+   |
+14 | const GREEN:  &str = "\x1b[32m";
+   |       ^^^^^
+
+warning: constant `CYAN` is never used
+  --> src/policy/approval.rs:17:7
+   |
+17 | const CYAN:   &str = "\x1b[36m";
+   |       ^^^^
+
+warning: associated items `dry_run`, `ask_plan`, and `confirm_plan` are never used
+   --> src/policy/approval.rs:26:12
+    |
+ 24 | impl ApprovalPrompt {
+    | ------------------- associated items in this implementation
+ 25 |     pub fn new() -> Self { Self { dry_run: false } }
+ 26 |     pub fn dry_run() -> Self { Self { dry_run: true } }
+    |            ^^^^^^^
+...
+ 53 |     pub fn ask_plan(&self, plan: &Plan, decisions: &[(Action, Decision)]) -> bool {
+    |            ^^^^^^^^
+...
+148 |     fn confirm_plan(&self) -> bool {
+    |        ^^^^^^^^^^^^
+
+warning: enum `Os` is never used
+ --> src/tools/detector.rs:4:10
+  |
+4 | pub enum Os {
+  |          ^^
+
+warning: enum `PackageManager` is never used
+  --> src/tools/detector.rs:14:10
+   |
+14 | pub enum PackageManager {
+   |          ^^^^^^^^^^^^^^
+
+warning: struct `SystemInfo` is never constructed
+  --> src/tools/detector.rs:22:12
+   |
+22 | pub struct SystemInfo {
+   |            ^^^^^^^^^^
+
+warning: associated items `detect`, `install_prefix`, `install_command`, and `describe` are never used
+  --> src/tools/detector.rs:30:12
+   |
+29 | impl SystemInfo {
+   | --------------- associated items in this implementation
+30 |     pub fn detect() -> Self {
+   |            ^^^^^^
+...
+39 |     pub fn install_prefix(&self) -> Vec<String> {
+   |            ^^^^^^^^^^^^^^
+...
+46 |     pub fn install_command(&self, tool: &str) -> Option<Vec<String>> {
+   |            ^^^^^^^^^^^^^^^
+...
+65 |     pub fn describe(&self) -> String {
+   |            ^^^^^^^^
+
+warning: function `detect_os` is never used
+  --> src/tools/detector.rs:79:4
+   |
+79 | fn detect_os() -> Os {
+   |    ^^^^^^^^^
+
+warning: function `detect_package_manager` is never used
+  --> src/tools/detector.rs:93:4
+   |
+93 | fn detect_package_manager(os: &Os) -> PackageManager {
+   |    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `detect_wsl` is never used
+   --> src/tools/detector.rs:108:4
+    |
+108 | fn detect_wsl() -> bool {
+    |    ^^^^^^^^^^
+
+warning: function `detect_root` is never used
+   --> src/tools/detector.rs:114:4
+    |
+114 | fn detect_root() -> bool {
+    |    ^^^^^^^^^^^
+
+warning: function `cmd_exists` is never used
+   --> src/tools/detector.rs:132:4
+    |
+132 | fn cmd_exists(cmd: &str) -> bool {
+    |    ^^^^^^^^^^
+
+warning: struct `ToolInstaller` is never constructed
+  --> src/tools/installer.rs:12:12
+   |
+12 | pub struct ToolInstaller {
+   |            ^^^^^^^^^^^^^
+
+warning: struct `KnownTool` is never constructed
+  --> src/tools/installer.rs:18:12
+   |
+18 | pub struct KnownTool {
+   |            ^^^^^^^^^
+
+warning: constant `KNOWN_TOOLS` is never used
+  --> src/tools/installer.rs:27:11
+   |
+27 | pub const KNOWN_TOOLS: &[KnownTool] = &[
+   |           ^^^^^^^^^^^
+
+warning: associated items `new`, `install`, `uninstall`, `list`, `available`, and `find_known` are never used
+   --> src/tools/installer.rs:61:12
+    |
+ 60 | impl ToolInstaller {
+    | ------------------ associated items in this implementation
+ 61 |     pub fn new(store: Store) -> anyhow::Result<Self> {
+    |            ^^^
+...
+ 69 |     pub fn install(&self, name: &str) -> Result<(), String> {
+    |            ^^^^^^^
+...
+128 |     pub fn uninstall(&self, name: &str) -> Result<(), String> {
+    |            ^^^^^^^^^
+...
+139 |     pub fn list(&self) {
+    |            ^^^^
+...
+155 |     pub fn available(&self) {
+    |            ^^^^^^^^^
+...
+166 |     fn find_known(&self, name: &str) -> Option<&KnownTool> {
+    |        ^^^^^^^^^^
+
+warning: function `binary_exists` is never used
+   --> src/tools/installer.rs:171:4
+    |
+171 | fn binary_exists(binary: &str) -> bool {
+    |    ^^^^^^^^^^^^^
+
+warning: function `get_version` is never used
+   --> src/tools/installer.rs:176:4
+    |
+176 | fn get_version(binary: &str) -> String {
+    |    ^^^^^^^^^^^
+
+warning: struct `ToolRecord` is never constructed
+  --> src/tools/registry.rs:10:12
+   |
+10 | pub struct ToolRecord {
+   |            ^^^^^^^^^^
+
+warning: struct `ToolRegistry` is never constructed
+  --> src/tools/registry.rs:21:12
+   |
+21 | pub struct ToolRegistry { store: Store }
+   |            ^^^^^^^^^^^^
+
+warning: multiple associated items are never used
+  --> src/tools/registry.rs:24:12
+   |
+23 | impl ToolRegistry {
+   | ----------------- associated items in this implementation
+24 |     pub fn new(store: Store) -> anyhow::Result<Self> {
+   |            ^^^
+...
+30 |     fn init(&self) -> anyhow::Result<()> {
+   |        ^^^^
+...
+47 |     pub fn register(&self, tool: &ToolRecord) -> anyhow::Result<()> {
+   |            ^^^^^^^^
+...
+63 |     pub fn get(&self, id: &str) -> anyhow::Result<Option<ToolRecord>> {
+   |            ^^^
+...
+76 |     pub fn list(&self) -> anyhow::Result<Vec<ToolRecord>> {
+   |            ^^^^
+...
+86 |     pub fn remove(&self, id: &str) -> anyhow::Result<bool> {
+   |            ^^^^^^
+...
+91 |     pub fn is_installed(&self, id: &str) -> bool {
+   |            ^^^^^^^^^^^^
+...
+95 |     fn conn(&self) -> anyhow::Result<Connection> {
+   |        ^^^^
+
+warning: function `row_to_tool` is never used
+   --> src/tools/registry.rs:102:4
+    |
+102 | fn row_to_tool(row: &rusqlite::Row) -> rusqlite::Result<ToolRecord> {
+    |    ^^^^^^^^^^^
+
+warning: struct `ToolRunner` is never constructed
+  --> src/tools/runner.rs:14:12
+   |
+14 | pub struct ToolRunner {
+   |            ^^^^^^^^^^
+
+warning: multiple associated items are never used
+   --> src/tools/runner.rs:19:12
+    |
+ 18 | impl ToolRunner {
+    | --------------- associated items in this implementation
+ 19 |     pub fn new(store: Store) -> anyhow::Result<Self> {
+    |            ^^^
+...
+ 24 |     pub fn scan(&self, target: &str, ports: Option<&str>) {
+    |            ^^^^
+...
+ 42 |     pub fn vuln(&self, target: &str) {
+    |            ^^^^
+...
+ 54 |     pub fn dirs(&self, target: &str, wordlist: Option<&str>) {
+    |            ^^^^
+...
+ 66 |     pub fn http(&self, url: &str) {
+    |            ^^^^
+...
+ 76 |     pub fn ssl(&self, host: &str) {
+    |            ^^^
+...
+ 87 |     pub fn whois_run(&self, target: &str) {
+    |            ^^^^^^^^^
+...
+ 97 |     fn check_installed(&self, tool: &str, command: &str) -> bool {
+    |        ^^^^^^^^^^^^^^^
+...
+107 |     fn run_streaming(&self, binary: &str, args: &[&str]) {
+    |        ^^^^^^^^^^^^^
+
+warning: struct `OutputFormatter` is never constructed
+  --> src/tools/formatter.rs:10:12
+   |
+10 | pub struct OutputFormatter;
+   |            ^^^^^^^^^^^^^^^
+
+warning: multiple associated functions are never used
+   --> src/tools/formatter.rs:14:12
+    |
+ 12 | impl OutputFormatter {
+    | -------------------- associated functions in this implementation
+ 13 |     /// Print a success line in green.
+ 14 |     pub fn success(msg: &str) {
+    |            ^^^^^^^
+...
+ 25 |     pub fn warning(msg: &str) {
+    |            ^^^^^^^
+...
+ 36 |     pub fn error(msg: &str) {
+    |            ^^^^^
+...
+ 47 |     pub fn info(msg: &str) {
+    |            ^^^^
+...
+ 57 |     pub fn header(title: &str) {
+    |            ^^^^^^
+...
+ 68 |     pub fn open_port(port: u16, service: &str) {
+    |            ^^^^^^^^^
+...
+ 81 |     pub fn host_found(ip: &str, hostname: &str) {
+    |            ^^^^^^^^^^
+...
+ 97 |     pub fn vulnerability(severity: &str, title: &str, detail: &str) {
+    |            ^^^^^^^^^^^^^
+...
+117 |     pub fn raw_output(output: &str, tool: &str) {
+    |            ^^^^^^^^^^
+
+warning: struct `ArpEntry` is never constructed
+ --> src/toolkit/arp.rs:4:12
+  |
+4 | pub struct ArpEntry {
+  |            ^^^^^^^^
+
+warning: function `read_arp_table` is never used
+  --> src/toolkit/arp.rs:11:8
+   |
+11 | pub fn read_arp_table() -> Vec<ArpEntry> {
+   |        ^^^^^^^^^^^^^^
+
+warning: function `print_arp_table` is never used
+  --> src/toolkit/arp.rs:32:8
+   |
+32 | pub fn print_arp_table(entries: &[ArpEntry]) {
+   |        ^^^^^^^^^^^^^^^
+
+warning: struct `DnsResult` is never constructed
+ --> src/toolkit/dns.rs:6:12
+  |
+6 | pub struct DnsResult {
+  |            ^^^^^^^^^
+
+warning: function `lookup_a` is never used
+  --> src/toolkit/dns.rs:13:8
+   |
+13 | pub fn lookup_a(domain: &str) -> Vec<DnsResult> {
+   |        ^^^^^^^^
+
+warning: function `print_results` is never used
+  --> src/toolkit/dns.rs:28:8
+   |
+28 | pub fn print_results(results: &[DnsResult]) {
+   |        ^^^^^^^^^^^^^
+
+warning: struct `ToolExplanation` is never constructed
+  --> src/toolkit/learn.rs:10:12
+   |
+10 | pub struct ToolExplanation {
+   |            ^^^^^^^^^^^^^^^
+
+warning: method `print` is never used
+  --> src/toolkit/learn.rs:20:12
+   |
+19 | impl ToolExplanation {
+   | -------------------- method in this implementation
+20 |     pub fn print(&self) {
+   |            ^^^^^
+
+warning: struct `LearningMode` is never constructed
+  --> src/toolkit/learn.rs:41:12
+   |
+41 | pub struct LearningMode {
+   |            ^^^^^^^^^^^^
+
+warning: associated items `new`, `explain`, and `list_tools` are never used
+   --> src/toolkit/learn.rs:46:12
+    |
+ 45 | impl LearningMode {
+    | ----------------- associated items in this implementation
+ 46 |     pub fn new() -> Self {
+    |            ^^^
+...
+106 |     pub fn explain(&self, tool: &str) -> Option<&ToolExplanation> {
+    |            ^^^^^^^
+...
+110 |     pub fn list_tools(&self) {
+    |            ^^^^^^^^^^
+
+warning: struct `ScanResult` is never constructed
+  --> src/toolkit/scan.rs:12:12
+   |
+12 | pub struct ScanResult {
+   |            ^^^^^^^^^^
+
+warning: struct `ScanConfig` is never constructed
+  --> src/toolkit/scan.rs:21:12
+   |
+21 | pub struct ScanConfig {
+   |            ^^^^^^^^^^
+
+warning: function `scan_host` is never used
+  --> src/toolkit/scan.rs:38:8
+   |
+38 | pub fn scan_host(host: &str, config: &ScanConfig) -> Vec<ScanResult> {
+   |        ^^^^^^^^^
+
+warning: function `scan_range` is never used
+  --> src/toolkit/scan.rs:66:8
+   |
+66 | pub fn scan_range(cidr: &str, config: &ScanConfig) -> Vec<ScanResult> {
+   |        ^^^^^^^^^^
+
+warning: function `print_results` is never used
+  --> src/toolkit/scan.rs:99:8
+   |
+99 | pub fn print_results(results: &[ScanResult]) {
+   |        ^^^^^^^^^^^^^
+
+warning: function `expand_cidr` is never used
+   --> src/toolkit/scan.rs:115:4
+    |
+115 | fn expand_cidr(cidr: &str) -> Result<Vec<Ipv4Addr>, String> {
+    |    ^^^^^^^^^^^
+
+warning: function `known_service` is never used
+   --> src/toolkit/scan.rs:145:4
+    |
+145 | fn known_service(port: u16) -> Option<String> {
+    |    ^^^^^^^^^^^^^
+
+warning: function `common_ports` is never used
+   --> src/toolkit/scan.rs:170:4
+    |
+170 | fn common_ports() -> Vec<u16> {
+    |    ^^^^^^^^^^^^
+
+warning: function `traceroute` is never used
+ --> src/toolkit/trace.rs:5:8
+  |
+5 | pub fn traceroute(host: &str) {
+  |        ^^^^^^^^^^
+
+warning: function `which_exists` is never used
+  --> src/toolkit/trace.rs:15:4
+   |
+15 | fn which_exists(cmd: &str) -> bool {
+   |    ^^^^^^^^^^^^
+
+warning: enum `LabState` is never used
+  --> src/toolkit/lab.rs:11:10
+   |
+11 | pub enum LabState {
+   |          ^^^^^^^^
+
+warning: struct `Lab` is never constructed
+  --> src/toolkit/lab.rs:16:12
+   |
+16 | pub struct Lab {
+   |            ^^^
+
+warning: multiple associated items are never used
+  --> src/toolkit/lab.rs:22:12
+   |
+21 | impl Lab {
+   | -------- associated items in this implementation
+22 |     pub fn new(cash_dir: &std::path::Path) -> Self {
+   |            ^^^
+...
+29 |     pub fn start(&mut self) -> Result<(), String> {
+   |            ^^^^^
+...
+45 |     pub fn stop(&mut self) {
+   |            ^^^^
+...
+55 |     pub fn status(&self) {
+   |            ^^^^^^
+...
+66 |     pub fn is_running(&self) -> bool {
+   |            ^^^^^^^^^^
+...
+70 |     pub fn log_command(&self, cmd: &str) {
+   |            ^^^^^^^^^^^
+...
+74 |     fn log(&self, msg: &str) {
+   |        ^^^
+
+warning: struct `Installer` is never constructed
+ --> src/marketplace/installer.rs:9:12
+  |
+9 | pub struct Installer {
+  |            ^^^^^^^^^
+
+warning: associated items `new`, `install`, `uninstall`, and `list` are never used
+  --> src/marketplace/installer.rs:14:12
+   |
+13 | impl Installer {
+   | -------------- associated items in this implementation
+14 |     pub fn new(store: Store) -> anyhow::Result<Self> {
+   |            ^^^
+...
+20 |     pub fn install(&self, manifest: &AgentManifest, data: &[u8]) -> Result<(), String> {
+   |            ^^^^^^^
+...
+51 |     pub fn uninstall(&self, id: &str) -> Result<(), String> {
+   |            ^^^^^^^^^
+...
+59 |     pub fn list(&self) -> anyhow::Result<Vec<InstalledAgent>> {
+   |            ^^^^
+
+warning: struct `InstalledAgent` is never constructed
+  --> src/marketplace/registry.rs:10:12
+   |
+10 | pub struct InstalledAgent {
+   |            ^^^^^^^^^^^^^^
+
+warning: struct `MarketplaceRegistry` is never constructed
+  --> src/marketplace/registry.rs:21:12
+   |
+21 | pub struct MarketplaceRegistry {
+   |            ^^^^^^^^^^^^^^^^^^^
+
+warning: multiple associated items are never used
+   --> src/marketplace/registry.rs:26:12
+    |
+ 25 | impl MarketplaceRegistry {
+    | ------------------------ associated items in this implementation
+ 26 |     pub fn new(store: Store) -> anyhow::Result<Self> {
+    |            ^^^
+...
+ 32 |     fn init(&self) -> anyhow::Result<()> {
+    |        ^^^^
+...
+ 49 |     pub fn install(&self, agent: &InstalledAgent) -> anyhow::Result<()> {
+    |            ^^^^^^^
+...
+ 67 |     pub fn uninstall(&self, id: &str) -> anyhow::Result<bool> {
+    |            ^^^^^^^^^
+...
+ 73 |     pub fn get(&self, id: &str) -> anyhow::Result<Option<InstalledAgent>> {
+    |            ^^^
+...
+ 88 |     pub fn list(&self) -> anyhow::Result<Vec<InstalledAgent>> {
+    |            ^^^^
+...
+ 98 |     pub fn enable(&self, id: &str, enabled: bool) -> anyhow::Result<()> {
+    |            ^^^^^^
+...
+107 |     fn conn(&self) -> anyhow::Result<Connection> {
+    |        ^^^^
+
+warning: function `row_to_agent` is never used
+   --> src/marketplace/registry.rs:112:4
+    |
+112 | fn row_to_agent(row: &rusqlite::Row) -> rusqlite::Result<InstalledAgent> {
+    |    ^^^^^^^^^^^^
+
+warning: struct `Verifier` is never constructed
+ --> src/marketplace/verifier.rs:9:12
+  |
+9 | pub struct Verifier;
+  |            ^^^^^^^^
+
+warning: associated functions `checksum`, `verify`, and `validate_manifest` are never used
+  --> src/marketplace/verifier.rs:13:12
+   |
+11 | impl Verifier {
+   | ------------- associated functions in this implementation
+12 |     /// Compute SHA-256 checksum of bytes.
+13 |     pub fn checksum(data: &[u8]) -> String {
+   |            ^^^^^^^^
+...
+20 |     pub fn verify(data: &[u8], expected: &str) -> bool {
+   |            ^^^^^^
+...
+25 |     pub fn validate_manifest(manifest: &AgentManifest) -> Result<(), Vec<String>> {
+   |            ^^^^^^^^^^^^^^^^^
+
+warning: struct `AgentManifest` is never constructed
+  --> src/marketplace/verifier.rs:37:12
+   |
+37 | pub struct AgentManifest {
+   |            ^^^^^^^^^^^^^
+
+warning: associated function `new` is never used
+  --> src/marketplace/verifier.rs:48:12
+   |
+47 | impl AgentManifest {
+   | ------------------ associated function in this implementation
+48 |     pub fn new(id: &str, name: &str, version: &str, entry: &str) -> Self {
+   |            ^^^
+
+warning: fields `id`, `name`, `permissions`, `trust_score`, and `registered_at` are never read
+   --> src/security/mod.rs:205:9
+    |
+204 | pub struct AgentRecord {
+    |            ----------- fields in this struct
+205 |     pub id: String, pub name: String, pub permissions: Vec<String>,
+    |         ^^              ^^^^              ^^^^^^^^^^^
+206 |     pub trust_score: f64, pub registered_at: String,
+    |         ^^^^^^^^^^^           ^^^^^^^^^^^^^
+    |
+    = note: `AgentRecord` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `register`, `has_permission`, and `deregister` are never used
+   --> src/security/mod.rs:218:12
+    |
+214 | impl AgentRegistry {
+    | ------------------ methods in this implementation
+...
+218 |     pub fn register(&self, id: &str, name: &str, permissions: Vec<String>) -> AgentRecord {
+    |            ^^^^^^^^
+...
+222 |     pub fn has_permission(&self, id: &str, perm: &str) -> bool {
+    |            ^^^^^^^^^^^^^^
+...
+225 |     pub fn deregister(&self, id: &str) { self.agents.lock().unwrap().remove(id); }
+    |            ^^^^^^^^^^
+
+warning: struct `NetworkWatcher` is never constructed
+   --> src/security/mod.rs:233:12
+    |
+233 | pub struct NetworkWatcher { blocked: Arc<Mutex<Vec<String>>> }
+    |            ^^^^^^^^^^^^^^
+
+warning: associated items `new`, `block`, and `is_blocked` are never used
+   --> src/security/mod.rs:235:12
+    |
+234 | impl NetworkWatcher {
+    | ------------------- associated items in this implementation
+235 |     pub fn new() -> Self { Self { blocked: Arc::new(Mutex::new(Vec::new())) } }
+    |            ^^^
+236 |     pub fn block(&self, d: &str) { self.blocked.lock().unwrap().push(d.to_lowercase()); }
+    |            ^^^^^
+237 |     pub fn is_blocked(&self, d: &str) -> bool { self.blocked.lock().unwrap().iter().any(|b| d.to_lowercase().co...
+    |            ^^^^^^^^^^
+
+warning: struct `TrustScorer` is never constructed
+   --> src/security/mod.rs:244:12
+    |
+244 | pub struct TrustScorer { scores: Arc<Mutex<HashMap<String,f64>>> }
+    |            ^^^^^^^^^^^
+
+warning: associated items `new`, `reward`, `penalise`, and `score` are never used
+   --> src/security/mod.rs:246:12
+    |
+245 | impl TrustScorer {
+    | ---------------- associated items in this implementation
+246 |     pub fn new() -> Self { Self { scores: Arc::new(Mutex::new(HashMap::new())) } }
+    |            ^^^
+247 |     pub fn reward(&self, id: &str, a: f64) { let mut m=self.scores.lock().unwrap(); let s=m.entry(id.into()).or...
+    |            ^^^^^^
+248 |     pub fn penalise(&self, id: &str, a: f64) { let mut m=self.scores.lock().unwrap(); let s=m.entry(id.into())....
+    |            ^^^^^^^^
+249 |     pub fn score(&self, id: &str) -> f64 { *self.scores.lock().unwrap().get(id).unwrap_or(&1.0) }
+    |            ^^^^^
+
+warning: function `obfuscate` is never used
+   --> src/security/mod.rs:261:4
+    |
+261 | fn obfuscate(value: &str, key: &str) -> String {
+    |    ^^^^^^^^^
+
+warning: function `deobfuscate` is never used
+   --> src/security/mod.rs:266:4
+    |
+266 | fn deobfuscate(hex: &str, key: &str) -> String {
+    |    ^^^^^^^^^^^
+
+warning: variant `Info` is never constructed
+  --> src/security/alert.rs:14:5
+   |
+13 | pub enum AlertLevel {
+   |          ---------- variant in this enum
+14 |     Info     = 0,
+   |     ^^^^
+   |
+   = note: `AlertLevel` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: associated function `from_str` is never used
+  --> src/security/alert.rs:20:12
+   |
+19 | impl AlertLevel {
+   | --------------- associated function in this implementation
+20 |     pub fn from_str(s: &str) -> Self {
+   |            ^^^^^^^^
+
+warning: methods `set_min_level`, `set_webhook`, `set_throttle_secs`, `info`, `warning`, and `recent` are never used
+   --> src/security/alert.rs:86:12
+    |
+ 74 | impl AlertSystem {
+    | ---------------- methods in this implementation
+...
+ 86 |     pub fn set_min_level(&mut self, level: AlertLevel) {
+    |            ^^^^^^^^^^^^^
+...
+ 90 |     pub fn set_webhook(&mut self, url: &str) {
+    |            ^^^^^^^^^^^
+...
+ 94 |     pub fn set_throttle_secs(&mut self, secs: i64) {
+    |            ^^^^^^^^^^^^^^^^^
+...
+133 |     pub fn info(&self, source: &str, msg: &str) {
+    |            ^^^^
+...
+137 |     pub fn warning(&self, source: &str, msg: &str) {
+    |            ^^^^^^^
+...
+145 |     pub fn recent(&self, limit: usize) -> Vec<Alert> {
+    |            ^^^^^^
+
+warning: methods `add_to_blocklist` and `recent_connections` are never used
+   --> src/security/network_monitor.rs:70:12
+    |
+ 54 | impl NetworkMonitor {
+    | ------------------- methods in this implementation
+...
+ 70 |     pub fn add_to_blocklist(&self, ip_or_domain: &str) {
+    |            ^^^^^^^^^^^^^^^^
+...
+109 |     pub fn recent_connections(&self, limit: usize) -> anyhow::Result<Vec<NetworkConnection>> {
+    |            ^^^^^^^^^^^^^^^^^^
+
+warning: field `seen_at` is never read
+  --> src/security/process_monitor.rs:27:9
+   |
+21 | pub struct ProcessInfo {
+   |            ----------- field in this struct
+...
+27 |     pub seen_at: String,
+   |         ^^^^^^^
+   |
+   = note: `ProcessInfo` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `recent_events` is never used
+   --> src/security/process_monitor.rs:159:12
+    |
+ 58 | impl ProcessMonitor {
+    | ------------------- method in this implementation
+...
+159 |     pub fn recent_events(&self, limit: usize) -> anyhow::Result<Vec<ProcessEvent>> {
+    |            ^^^^^^^^^^^^^
+
+warning: struct `Vault` is never constructed
+  --> src/security/mod.rs:36:16
+   |
+36 |     pub struct Vault { pub cash_dir: PathBuf }
+   |                ^^^^^
+
+warning: associated items `new`, `set`, `get`, and `delete` are never used
+  --> src/security/mod.rs:39:16
+   |
+38 |     impl Vault {
+   |     ---------- associated items in this implementation
+39 |         pub fn new(cash_dir: &Path) -> Self { Self { cash_dir: cash_dir.to_path_buf() } }
+   |                ^^^
+40 |
+41 |         pub fn set(&self, key: &str, value: &str) -> anyhow::Result<()> {
+   |                ^^^
+...
+52 |         pub fn get(&self, key: &str) -> anyhow::Result<Option<String>> {
+   |                ^^^
+...
+64 |         pub fn delete(&self, key: &str) -> anyhow::Result<()> {
+   |                ^^^^^^
+
+warning: method `success` is never used
+  --> src/shell/executor.rs:15:12
+   |
+14 | impl ExitStatus {
+   | --------------- method in this implementation
+15 |     pub fn success(&self) -> bool { self.code == 0 }
+   |            ^^^^^^^
+
+warning: fields `original_name` and `confidence` are never read
+  --> src/shell/resolver.rs:25:9
+   |
+24 |     Resolved {
+   |     -------- fields in this variant
+25 |         original_name: String,
+   |         ^^^^^^^^^^^^^
+26 |         command:       String,
+27 |         confidence:    f64,
+   |         ^^^^^^^^^^
+   |
+   = note: `ResolveResult` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `original_name` is never read
+  --> src/shell/resolver.rs:33:9
+   |
+32 |     BelowThreshold {
+   |     -------------- field in this variant
+33 |         original_name: String,
+   |         ^^^^^^^^^^^^^
+   |
+   = note: `ResolveResult` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `input` is never read
+  --> src/shell/resolver.rs:40:9
+   |
+39 |     NotFound {
+   |     -------- field in this variant
+40 |         input: String,
+   |         ^^^^^
+   |
+   = note: `ResolveResult` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `score` is never read
+  --> src/shell/suggester.rs:23:9
+   |
+20 |     SystemTypo {
+   |     ---------- field in this variant
+...
+23 |         score:      f64,
+   |         ^^^^^
+   |
+   = note: `Suggestion` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `score` is never read
+  --> src/shell/suggester.rs:30:9
+   |
+26 |     TaughtCommand {
+   |     ------------- field in this variant
+...
+30 |         score:      f64,
+   |         ^^^^^
+   |
+   = note: `Suggestion` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: constant `BUILTINS` is never used
+  --> src/shell/completion.rs:13:7
+   |
+13 | const BUILTINS: &[&str] = &[
+   |       ^^^^^^^^
+
+warning: struct `Completion` is never constructed
+  --> src/shell/completion.rs:20:12
+   |
+20 | pub struct Completion {
+   |            ^^^^^^^^^^
+
+warning: enum `CompletionKind` is never used
+  --> src/shell/completion.rs:26:10
+   |
+26 | pub enum CompletionKind {
+   |          ^^^^^^^^^^^^^^
+
+warning: method `display` is never used
+  --> src/shell/completion.rs:35:12
+   |
+34 | impl Completion {
+   | --------------- method in this implementation
+35 |     pub fn display(&self) -> &str {
+   |            ^^^^^^^
+
+warning: struct `Completer` is never constructed
+  --> src/shell/completion.rs:40:12
+   |
+40 | pub struct Completer {
+   |            ^^^^^^^^^
+
+warning: associated items `new`, `complete`, `complete_command`, and `complete_path` are never used
+   --> src/shell/completion.rs:45:12
+    |
+ 44 | impl Completer {
+    | -------------- associated items in this implementation
+ 45 |     pub fn new(store: Store) -> Self {
+    |            ^^^
+...
+ 50 |     pub fn complete(&self, line: &str, cursor: usize) -> Vec<Completion> {
+    |            ^^^^^^^^
+...
+ 67 |     fn complete_command(&self, prefix: &str) -> Vec<Completion> {
+    |        ^^^^^^^^^^^^^^^^
+...
+114 |     fn complete_path(&self, prefix: &str) -> Vec<Completion> {
+    |        ^^^^^^^^^^^^^
+
+warning: function `current_word` is never used
+   --> src/shell/completion.rs:152:4
+    |
+152 | fn current_word(line: &str) -> &str {
+    |    ^^^^^^^^^^^^
+
+warning: function `is_first_token` is never used
+   --> src/shell/completion.rs:156:4
+    |
+156 | fn is_first_token(line: &str) -> bool {
+    |    ^^^^^^^^^^^^^^
+
+warning: function `split_path` is never used
+   --> src/shell/completion.rs:160:4
+    |
+160 | fn split_path(path: &str) -> (String, String) {
+    |    ^^^^^^^^^^
+
+warning: function `expand_tilde` is never used
+   --> src/shell/completion.rs:168:4
+    |
+168 | fn expand_tilde(s: &str) -> String {
+    |    ^^^^^^^^^^^^
+
+warning: constant `BUILTINS` is never used
+  --> src/shell/highlight.rs:15:7
+   |
+15 | const BUILTINS: &[&str] = &[
+   |       ^^^^^^^^
+
+warning: enum `TokenKind` is never used
+  --> src/shell/highlight.rs:21:10
+   |
+21 | pub enum TokenKind {
+   |          ^^^^^^^^^
+
+warning: struct `HighlightedToken` is never constructed
+  --> src/shell/highlight.rs:33:12
+   |
+33 | pub struct HighlightedToken {
+   |            ^^^^^^^^^^^^^^^^
+
+warning: function `highlight` is never used
+  --> src/shell/highlight.rs:39:8
+   |
+39 | pub fn highlight(line: &str) -> Vec<HighlightedToken> {
+   |        ^^^^^^^^^
+
+warning: function `classify` is never used
+  --> src/shell/highlight.rs:64:4
+   |
+64 | fn classify(token: &str, is_command: bool) -> TokenKind {
+   |    ^^^^^^^^
+
+warning: function `command_exists` is never used
+  --> src/shell/highlight.rs:93:4
+   |
+93 | fn command_exists(cmd: &str) -> bool {
+   |    ^^^^^^^^^^^^^^
+
+warning: function `split_for_highlight` is never used
+   --> src/shell/highlight.rs:102:4
+    |
+102 | fn split_for_highlight(line: &str) -> Vec<String> {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `print_highlighted` is never used
+   --> src/shell/highlight.rs:137:8
+    |
+137 | pub fn print_highlighted<W: Write>(out: &mut W, tokens: &[HighlightedToken]) -> std::io::Result<()> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: struct `HistorySearch` is never constructed
+ --> src/shell/history_search.rs:8:12
+  |
+8 | pub struct HistorySearch {
+  |            ^^^^^^^^^^^^^
+
+warning: multiple associated items are never used
+  --> src/shell/history_search.rs:16:12
+   |
+15 | impl HistorySearch {
+   | ------------------ associated items in this implementation
+16 |     pub fn new(store: Store) -> Self {
+   |            ^^^
+...
+21 |     pub fn push(&mut self, ch: char) {
+   |            ^^^^
+...
+27 |     pub fn pop(&mut self) {
+   |            ^^^
+...
+33 |     pub fn next(&mut self) {
+   |            ^^^^
+...
+40 |     pub fn prev(&mut self) {
+   |            ^^^^
+...
+47 |     pub fn current(&self) -> Option<&str> {
+   |            ^^^^^^^
+...
+51 |     pub fn query(&self) -> &str {
+   |            ^^^^^
+...
+55 |     pub fn prompt(&self) -> String {
+   |            ^^^^^^
+...
+60 |     pub fn clear(&mut self) {
+   |            ^^^^^
+...
+66 |     fn refresh(&mut self) {
+   |        ^^^^^^^
+
+warning: enum `Intent` is never used
+  --> src/shell/intent.rs:14:10
+   |
+14 | pub enum Intent {
+   |          ^^^^^^
+
+warning: struct `IntentResult` is never constructed
+  --> src/shell/intent.rs:50:12
+   |
+50 | pub struct IntentResult {
+   |            ^^^^^^^^^^^^
+
+warning: struct `IntentEngine` is never constructed
+  --> src/shell/intent.rs:57:12
+   |
+57 | pub struct IntentEngine {
+   |            ^^^^^^^^^^^^
+
+warning: struct `IntentPattern` is never constructed
+  --> src/shell/intent.rs:61:8
+   |
+61 | struct IntentPattern {
+   |        ^^^^^^^^^^^^^
+
+warning: associated items `new`, `classify`, and `explain` are never used
+   --> src/shell/intent.rs:68:12
+    |
+ 67 | impl IntentEngine {
+    | ----------------- associated items in this implementation
+ 68 |     pub fn new() -> Self {
+    |            ^^^
+...
+ 73 |     pub fn classify(&self, input: &str) -> IntentResult {
+    |            ^^^^^^^^
+...
+100 |     pub fn explain(&self, result: &IntentResult) {
+    |            ^^^^^^^
+
+warning: function `build_patterns` is never used
+   --> src/shell/intent.rs:119:4
+    |
+119 | fn build_patterns() -> Vec<IntentPattern> {
+    |    ^^^^^^^^^^^^^^
+
+warning: function `extract_target` is never used
+   --> src/shell/intent.rs:217:4
+    |
+217 | fn extract_target(input: &str) -> Option<String> {
+    |    ^^^^^^^^^^^^^^
+
+warning: enum `JobState` is never used
+  --> src/shell/jobs.rs:12:10
+   |
+12 | pub enum JobState {
+   |          ^^^^^^^^
+
+warning: struct `Job` is never constructed
+  --> src/shell/jobs.rs:19:12
+   |
+19 | pub struct Job {
+   |            ^^^
+
+warning: method `state_str` is never used
+  --> src/shell/jobs.rs:27:12
+   |
+26 | impl Job {
+   | -------- method in this implementation
+27 |     pub fn state_str(&self) -> &str {
+   |            ^^^^^^^^^
+
+warning: struct `JobTable` is never constructed
+  --> src/shell/jobs.rs:36:12
+   |
+36 | pub struct JobTable {
+   |            ^^^^^^^^
+
+warning: multiple associated items are never used
+   --> src/shell/jobs.rs:42:12
+    |
+ 41 | impl JobTable {
+    | ------------- associated items in this implementation
+ 42 |     pub fn new() -> Self {
+    |            ^^^
+...
+ 50 |     pub fn add(&self, pid: u32, command: &str) -> usize {
+    |            ^^^
+...
+ 64 |     pub fn list(&self) -> Vec<Job> {
+    |            ^^^^
+...
+ 71 |     pub fn print(&self) {
+    |            ^^^^^
+...
+ 83 |     pub fn mark_done(&self, id: usize, exit_code: i32) {
+    |            ^^^^^^^^^
+...
+ 90 |     pub fn mark_stopped(&self, id: usize) {
+    |            ^^^^^^^^^^^^
+...
+ 97 |     pub fn clean(&self) {
+    |            ^^^^^
+...
+102 |     pub fn get(&self, id: usize) -> Option<Job> {
+    |            ^^^
+...
+107 |     pub fn last(&self) -> Option<Job> {
+    |            ^^^^
+...
+113 |     pub fn count(&self) -> usize {
+    |            ^^^^^
+...
+119 |     pub fn continue_job(&self, id: usize) -> Result<(), String> {
+    |            ^^^^^^^^^^^^
+
+warning: function `libc_kill` is never used
+   --> src/shell/jobs.rs:144:11
+    |
+144 | unsafe fn libc_kill(pid: i32, sig: i32) -> i32 {
+    |           ^^^^^^^^^
+
+warning: function `kill` is never used
+   --> src/shell/jobs.rs:140:8
+    |
+140 |     fn kill(pid: i32, sig: i32) -> i32;
+    |        ^^^^
+
+warning: associated function `open_at` is never used
+  --> src/store/mod.rs:47:12
+   |
+20 | impl Store {
+   | ---------- associated function in this implementation
+...
+47 |     pub fn open_at(root: &std::path::Path) -> anyhow::Result<Self> {
+   |            ^^^^^^^
+
+warning: struct `AuditEntry` is never constructed
+  --> src/store/audit.rs:25:12
+   |
+25 | pub struct AuditEntry {
+   |            ^^^^^^^^^^
+
+warning: function `recent` is never used
+   --> src/store/audit.rs:104:8
+    |
+104 | pub fn recent(store: &Store, limit: usize) -> anyhow::Result<Vec<AuditEntry>> {
+    |        ^^^^^^
+
+warning: function `by_session` is never used
+   --> src/store/audit.rs:117:8
+    |
+117 | pub fn by_session(store: &Store, session_id: &str) -> anyhow::Result<Vec<AuditEntry>> {
+    |        ^^^^^^^^^^
+
+warning: function `verify_entry` is never used
+   --> src/store/audit.rs:130:8
+    |
+130 | pub fn verify_entry(entry: &AuditEntry) -> bool {
+    |        ^^^^^^^^^^^^
+
+warning: function `verify_all` is never used
+   --> src/store/audit.rs:141:8
+    |
+141 | pub fn verify_all(store: &Store) -> anyhow::Result<Vec<i64>> {
+    |        ^^^^^^^^^^
+
+warning: function `row_to_entry` is never used
+   --> src/store/audit.rs:167:4
+    |
+167 | fn row_to_entry(row: &rusqlite::Row) -> rusqlite::Result<AuditEntry> {
+    |    ^^^^^^^^^^^^
+
+warning: struct `HistoryEntry` is never constructed
+  --> src/store/history.rs:16:12
+   |
+16 | pub struct HistoryEntry {
+   |            ^^^^^^^^^^^^
+
+warning: function `recent` is never used
+  --> src/store/history.rs:80:8
+   |
+80 | pub fn recent(store: &Store, limit: usize) -> anyhow::Result<Vec<HistoryEntry>> {
+   |        ^^^^^^
+
+warning: function `search` is never used
+   --> src/store/history.rs:101:8
+    |
+101 | pub fn search(store: &Store, query: &str, limit: usize) -> anyhow::Result<Vec<HistoryEntry>> {
+    |        ^^^^^^
+
+warning: fields `id`, `created_at`, `use_count`, and `last_used_at` are never read
+  --> src/store/memory.rs:20:9
+   |
+19 | pub struct Memory {
+   |            ------ fields in this struct
+20 |     pub id:           i64,
+   |         ^^
+...
+23 |     pub created_at:   String,
+   |         ^^^^^^^^^^
+24 |     pub use_count:    i64,
+   |         ^^^^^^^^^
+25 |     pub last_used_at: Option<String>,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `Memory` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: `cash` (bin "cash") generated 170 warnings (8 duplicates) (run `cargo fix --bin "cash" -p cash` to apply 17 suggestions)
+warning: unused variable: `ip`
+   --> src/security/network_monitor.rs:278:14
+    |
+278 |         let (ip, port) = result.unwrap();
+    |              ^^ help: if this is intentional, prefix it with an underscore: `_ip`
+
+warning: variants `WriteFiles` and `SpawnAgents` are never constructed
+  --> src/agents/agent.rs:28:5
+   |
+24 | pub enum AgentPermission {
+   |          --------------- variants in this enum
+...
+28 |     WriteFiles,
+   |     ^^^^^^^^^^
+...
+40 |     SpawnAgents,
+   |     ^^^^^^^^^^^
+   |
+   = note: `AgentPermission` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `name`, `version`, `registered_at`, `trust_score`, and `metadata` are never read
+  --> src/agents/agent.rs:48:9
+   |
+44 | pub struct Agent {
+   |            ----- fields in this struct
+...
+48 |     pub name:         String,
+   |         ^^^^
+49 |     /// Version string.
+50 |     pub version:      String,
+   |         ^^^^^^^
+...
+56 |     pub registered_at: String,
+   |         ^^^^^^^^^^^^^
+57 |     /// Trust score (0.0 = untrusted, 10.0 = fully trusted).
+58 |     pub trust_score:  f64,
+   |         ^^^^^^^^^^^
+59 |     /// Agent-specific metadata (key/value).
+60 |     pub metadata:     std::collections::HashMap<String, String>,
+   |         ^^^^^^^^
+   |
+   = note: `Agent` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `is_running` is never used
+  --> src/agents/agent.rs:81:12
+   |
+63 | impl Agent {
+   | ---------- method in this implementation
+...
+81 |     pub fn is_running(&self) -> bool {
+   |            ^^^^^^^^^^
+
+warning: field `topic` is never read
+  --> src/agents/bus.rs:15:9
+   |
+12 | pub struct Message {
+   |            ------- field in this struct
+...
+15 |     pub topic:   String,
+   |         ^^^^^
+   |
+   = note: `Message` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `keys` and `is_empty` are never used
+  --> src/agents/memory.rs:34:12
+   |
+15 | impl SharedMemory {
+   | ----------------- methods in this implementation
+...
+34 |     pub fn keys(&self) -> Vec<String> {
+   |            ^^^^
+...
+42 |     pub fn is_empty(&self) -> bool {
+   |            ^^^^^^^^
+
+warning: methods `pause`, `agent_count`, and `bus` are never used
+   --> src/agents/runtime.rs:47:12
+    |
+ 19 | impl AgentRuntime {
+    | ----------------- methods in this implementation
+...
+ 47 |     pub fn pause(&self, agent_id: &str) -> Result<(), String> {
+    |            ^^^^^
+...
+102 |     pub fn agent_count(&self) -> usize {
+    |            ^^^^^^^^^^^
+...
+113 |     pub fn bus(&self) -> Arc<MessageBus> {
+    |            ^^^
+
+warning: fields `id`, `intent`, and `created_at` are never read
+   --> src/policy/action.rs:188:9
+    |
+187 | pub struct Plan {
+    |            ---- fields in this struct
+188 |     pub id:          String,
+    |         ^^
+189 |     pub intent:      String,
+    |         ^^^^^^
+190 |     pub actions:     Vec<Action>,
+191 |     pub created_at:  String,
+    |         ^^^^^^^^^^
+    |
+    = note: `Plan` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `ask_plan` and `confirm_plan` are never used
+   --> src/policy/approval.rs:53:12
+    |
+ 24 | impl ApprovalPrompt {
+    | ------------------- methods in this implementation
+...
+ 53 |     pub fn ask_plan(&self, plan: &Plan, decisions: &[(Action, Decision)]) -> bool {
+    |            ^^^^^^^^
+...
+148 |     fn confirm_plan(&self) -> bool {
+    |        ^^^^^^^^^^^^
+
+warning: fields `apt_name` and `brew_name` are never read
+  --> src/tools/installer.rs:20:9
+   |
+18 | pub struct KnownTool {
+   |            --------- fields in this struct
+19 |     pub id:           &'static str,
+20 |     pub apt_name:     &'static str,
+   |         ^^^^^^^^
+21 |     pub brew_name:    &'static str,
+   |         ^^^^^^^^^
+
+warning: field `installed_at` is never read
+  --> src/tools/registry.rs:17:9
+   |
+10 | pub struct ToolRecord {
+   |            ---------- field in this struct
+...
+17 |     pub installed_at: String,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `ToolRecord` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple methods are never used
+   --> src/tools/runner.rs:24:12
+    |
+ 18 | impl ToolRunner {
+    | --------------- methods in this implementation
+...
+ 24 |     pub fn scan(&self, target: &str, ports: Option<&str>) {
+    |            ^^^^
+...
+ 42 |     pub fn vuln(&self, target: &str) {
+    |            ^^^^
+...
+ 54 |     pub fn dirs(&self, target: &str, wordlist: Option<&str>) {
+    |            ^^^^
+...
+ 66 |     pub fn http(&self, url: &str) {
+    |            ^^^^
+...
+ 76 |     pub fn ssl(&self, host: &str) {
+    |            ^^^
+...
+ 87 |     pub fn whois_run(&self, target: &str) {
+    |            ^^^^^^^^^
+...
+107 |     fn run_streaming(&self, binary: &str, args: &[&str]) {
+    |        ^^^^^^^^^^^^^
+
+warning: associated functions `success` and `raw_output` are never used
+   --> src/tools/formatter.rs:14:12
+    |
+ 12 | impl OutputFormatter {
+    | -------------------- associated functions in this implementation
+ 13 |     /// Print a success line in green.
+ 14 |     pub fn success(msg: &str) {
+    |            ^^^^^^^
+...
+117 |     pub fn raw_output(output: &str, tool: &str) {
+    |            ^^^^^^^^^^
+
+warning: fields `mac` and `interface` are never read
+ --> src/toolkit/arp.rs:6:9
+  |
+4 | pub struct ArpEntry {
+  |            -------- fields in this struct
+5 |     pub ip:        String,
+6 |     pub mac:       String,
+  |         ^^^
+7 |     pub interface: String,
+  |         ^^^^^^^^^
+  |
+  = note: `ArpEntry` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `domain` and `value` are never read
+ --> src/toolkit/dns.rs:7:9
+  |
+6 | pub struct DnsResult {
+  |            --------- fields in this struct
+7 |     pub domain:      String,
+  |         ^^^^^^
+8 |     pub record_type: String,
+9 |     pub value:       String,
+  |         ^^^^^
+  |
+  = note: `DnsResult` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `name` and `why_hackers` are never read
+  --> src/toolkit/learn.rs:11:9
+   |
+10 | pub struct ToolExplanation {
+   |            --------------- fields in this struct
+11 |     pub name:        String,
+   |         ^^^^
+12 |     pub what:        String,
+13 |     pub why_hackers: String,
+   |         ^^^^^^^^^^^
+   |
+   = note: `ToolExplanation` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `list_tools` is never used
+   --> src/toolkit/learn.rs:110:12
+    |
+ 45 | impl LearningMode {
+    | ----------------- method in this implementation
+...
+110 |     pub fn list_tools(&self) {
+    |            ^^^^^^^^^^
+
+warning: fields `timeout_ms` and `show_closed` are never read
+  --> src/toolkit/scan.rs:22:9
+   |
+21 | pub struct ScanConfig {
+   |            ---------- fields in this struct
+22 |     pub timeout_ms:  u64,
+   |         ^^^^^^^^^^
+23 |     pub ports:       Vec<u16>,
+24 |     pub show_closed: bool,
+   |         ^^^^^^^^^^^
+   |
+   = note: `ScanConfig` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `status` is never used
+  --> src/toolkit/lab.rs:55:12
+   |
+21 | impl Lab {
+   | -------- method in this implementation
+...
+55 |     pub fn status(&self) {
+   |            ^^^^^^
+
+warning: field `installed_at` is never read
+  --> src/marketplace/registry.rs:17:9
+   |
+10 | pub struct InstalledAgent {
+   |            -------------- field in this struct
+...
+17 |     pub installed_at: String,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `InstalledAgent` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `id`, `name`, `trust_score`, and `registered_at` are never read
+   --> src/security/mod.rs:205:9
+    |
+204 | pub struct AgentRecord {
+    |            ----------- fields in this struct
+205 |     pub id: String, pub name: String, pub permissions: Vec<String>,
+    |         ^^              ^^^^
+206 |     pub trust_score: f64, pub registered_at: String,
+    |         ^^^^^^^^^^^           ^^^^^^^^^^^^^
+    |
+    = note: `AgentRecord` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `set_min_level`, `set_webhook`, and `set_throttle_secs` are never used
+  --> src/security/alert.rs:86:12
+   |
+74 | impl AlertSystem {
+   | ---------------- methods in this implementation
+...
+86 |     pub fn set_min_level(&mut self, level: AlertLevel) {
+   |            ^^^^^^^^^^^^^
+...
+90 |     pub fn set_webhook(&mut self, url: &str) {
+   |            ^^^^^^^^^^^
+...
+94 |     pub fn set_throttle_secs(&mut self, secs: i64) {
+   |            ^^^^^^^^^^^^^^^^^
+
+warning: field `kind` is never read
+  --> src/shell/completion.rs:22:9
+   |
+20 | pub struct Completion {
+   |            ---------- field in this struct
+21 |     pub value:   String,
+22 |     pub kind:    CompletionKind,
+   |         ^^^^
+   |
+   = note: `Completion` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `text` is never read
+  --> src/shell/highlight.rs:34:9
+   |
+33 | pub struct HighlightedToken {
+   |            ---------------- field in this struct
+34 |     pub text:  String,
+   |         ^^^^
+   |
+   = note: `HighlightedToken` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `prev` and `prompt` are never used
+  --> src/shell/history_search.rs:40:12
+   |
+15 | impl HistorySearch {
+   | ------------------ methods in this implementation
+...
+40 |     pub fn prev(&mut self) {
+   |            ^^^^
+...
+55 |     pub fn prompt(&self) -> String {
+   |            ^^^^^^
+
+warning: multiple variants are never constructed
+  --> src/shell/intent.rs:17:5
+   |
+14 | pub enum Intent {
+   |          ------ variants in this enum
+...
+17 |     ScanPorts   { target: String, ports: Option<String> },
+   |     ^^^^^^^^^
+18 |     TraceRoute  { target: String },
+   |     ^^^^^^^^^^
+19 |     DnsLookup   { target: String },
+   |     ^^^^^^^^^
+20 |     CheckSsl    { target: String },
+21 |     HttpInspect { target: String },
+   |     ^^^^^^^^^^^
+...
+25 |     RouterScan,
+   |     ^^^^^^^^^^
+...
+32 |     CheckConnections,
+   |     ^^^^^^^^^^^^^^^^
+...
+37 |     UpdateTools,
+   |     ^^^^^^^^^^^
+...
+40 |     ListFiles    { path: Option<String> },
+   |     ^^^^^^^^^
+41 |     ChangeDir    { path: String },
+   |     ^^^^^^^^^
+42 |     ShowHelp     { topic: Option<String> },
+   |     ^^^^^^^^
+43 |     TeachCommand { name: String, command: String },
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Intent` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: method `explain` is never used
+   --> src/shell/intent.rs:100:12
+    |
+ 67 | impl IntentEngine {
+    | ----------------- method in this implementation
+...
+100 |     pub fn explain(&self, result: &IntentResult) {
+    |            ^^^^^^^
+
+warning: variant `Stopped` is never constructed
+  --> src/shell/jobs.rs:14:5
+   |
+12 | pub enum JobState {
+   |          -------- variant in this enum
+13 |     Running,
+14 |     Stopped,
+   |     ^^^^^^^
+   |
+   = note: `JobState` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `pid` is never read
+  --> src/shell/jobs.rs:21:9
+   |
+19 | pub struct Job {
+   |            --- field in this struct
+20 |     pub id:      usize,
+21 |     pub pid:     u32,
+   |         ^^^
+   |
+   = note: `Job` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `mark_stopped`, `clean`, and `continue_job` are never used
+   --> src/shell/jobs.rs:90:12
+    |
+ 41 | impl JobTable {
+    | ------------- methods in this implementation
+...
+ 90 |     pub fn mark_stopped(&self, id: usize) {
+    |            ^^^^^^^^^^^^
+...
+ 97 |     pub fn clean(&self) {
+    |            ^^^^^
+...
+119 |     pub fn continue_job(&self, id: usize) -> Result<(), String> {
+    |            ^^^^^^^^^^^^
+
+warning: fields `exit_code` and `kind` are never read
+  --> src/store/audit.rs:30:9
+   |
+25 | pub struct AuditEntry {
+   |            ---------- fields in this struct
+...
+30 |     pub exit_code:   i32,
+   |         ^^^^^^^^^
+31 |     pub kind:        String,
+   |         ^^^^
+   |
+   = note: `AuditEntry` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `id`, `cwd`, `exit_code`, and `ran_at` are never read
+  --> src/store/history.rs:17:9
+   |
+16 | pub struct HistoryEntry {
+   |            ------------ fields in this struct
+17 |     pub id:        i64,
+   |         ^^
+18 |     pub command:   String,
+19 |     pub cwd:       String,
+   |         ^^^
+20 |     pub exit_code: i32,
+   |         ^^^^^^^^^
+21 |     pub ran_at:    String,  // ISO-8601
+   |         ^^^^^^
+   |
+   = note: `HistoryEntry` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `id`, `created_at`, and `last_used_at` are never read
+  --> src/store/memory.rs:20:9
+   |
+19 | pub struct Memory {
+   |            ------ fields in this struct
+20 |     pub id:           i64,
+   |         ^^
+...
+23 |     pub created_at:   String,
+   |         ^^^^^^^^^^
+24 |     pub use_count:    i64,
+25 |     pub last_used_at: Option<String>,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `Memory` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: `cash` (lib test) generated 10 warnings (10 duplicates)
+warning: `cash` (bin "cash" test) generated 87 warnings (54 duplicates) (run `cargo fix --bin "cash" -p cash --tests` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.81s
+     Running unittests src/lib.rs (target/debug/deps/cash-18180de0db5db97c)
+[38;5;9m[1m[0m     Running unittests src/main.rs (target/debug/deps/cash-7bfd33c3f98ff44f)
+[38;5;9m[1m[0m     Running tests/integration.rs (target/debug/deps/integration-76d46881112dd87e)
+   Doc-tests cash
