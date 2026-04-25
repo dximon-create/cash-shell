@@ -10,6 +10,7 @@
 //                               marketplace
 
 mod agents;
+mod tools;
 mod toolkit;
 mod marketplace;
 mod security;
