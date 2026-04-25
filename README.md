@@ -1,55 +1,45 @@
 # cash — Conscious Adaptive Secure Host
 
-A standalone, first-class shell written in Rust.
+A standalone, first-class shell written in Rust. Not a wrapper over Bash or Zsh.
 
-cash is not a wrapper over Bash or Zsh. It owns the process, the prompt, the environment, I/O, signals, and job control directly. It talks to the OS via `fork()` and `exec()`.
+---
+
+## What makes cash different
+
+| Feature | Bash | Zsh | Fish | cash |
+|---|---|---|---|---|
+| Natural language commands | ✗ | ✗ | ✗ | ✅ |
+| Teachable aliases | ✗ | ✗ | ✗ | ✅ |
+| Built-in security engine | ✗ | ✗ | ✗ | ✅ |
+| Process + network monitor | ✗ | ✗ | ✗ | ✅ |
+| Audit log (SHA-256 hashed) | ✗ | ✗ | ✗ | ✅ |
+| Tamper detection | ✗ | ✗ | ✗ | ✅ |
+| AI intent engine | ✗ | ✗ | ✗ | ✅ |
+| Agent platform | ✗ | ✗ | ✗ | ✅ |
+| Tool manager | ✗ | ✗ | ✗ | ✅ |
+| Syntax highlighting | ✗ | Plugin | ✅ | ✅ |
+| Tab completion | Basic | Good | ✅ | ✅ |
+| Written in | C | C | C++ | **Rust** |
 
 ---
 
 ## Three Layers
 
 **Layer 1 — The Shell**
-Natural language commands. Teachable. Suggests corrections. Never fails silently.
+Natural language. Teachable. Suggests corrections. Never fails silently.
+Tab completion. Syntax highlighting. Ctrl+R history search. Job control.
 
 **Layer 2 — Security Engine**
-Audit log. Behaviour baseline. Anomaly detection. Agent registration. Permission walls. Network watching. Vault protection. Tamper detection. Trust scores. Sandbox mode. Runs on a separate thread. Never blocks the shell.
+Process monitor. Network monitor. Audit log. Tamper detection.
+Real-time alerts. Trust scores. Vault. Runs on separate thread. Cannot be disabled.
 
 **Layer 3 — Agent Platform**
-Native runtime for AI agents. Shared memory. Agent-to-agent messaging via Unix domain sockets. Agent marketplace. Token-efficient by design. Agents use CLI tools to act, AI APIs only to think.
+Native AI agent runtime. Shared memory. Message bus. Marketplace.
+Agents think via AI APIs. Act via CLI tools.
 
 ---
 
-## Built-in Commands
-
-| Command | Description |
-|---|---|
-| `show [path]` | List directory contents |
-| `go [path]` | Change directory (`go -` for previous) |
-| `copy [-r] <src> <dst>` | Copy file or directory |
-| `move <src> <dst>` | Move or rename |
-| `remove [-rf] <targets>` | Delete (confirms destructive ops) |
-| `teach <name> '<cmd>'` | Teach cash a natural language alias |
-| `help [command]` | Show help |
-| `exit [code]` | Exit the shell |
-
----
-
-## Shell Features
-
-- Pipes: `cmd1 | cmd2 | cmd3`
-- Redirects: `>` `>>` `<` `2>`
-- Environment variables: `VAR=value command`
-- Natural language resolver: exact → pattern → fuzzy match
-- Suggestion engine: typo detection, taught command hints
-- Command history in `~/.cash/history.db`
-- Audit log in `~/.cash/audit.db` (SHA-256 hashed, append-only)
-- Tamper detection: watches `~/.cash/` for outside modification
-
----
-
-## Build
-
-**Requirements:** Rust 1.75+, Linux or macOS (WSL on Windows)
+## Quick Start
 
 ```bash
 git clone https://github.com/dximon-create/cash-shell
@@ -58,33 +48,110 @@ cargo build --release
 ./target/release/cash
 ```
 
-**Run tests:**
+---
+
+## Built-in Commands
+
 ```bash
-cargo test
+show [path]              # list directory — dirs first, human sizes
+go [path / ~ / -]        # change directory — go - returns to previous
+copy [-r] <src> <dst>    # copy file or directory
+move <src> <dst>         # move or rename
+remove [-rf] <targets>   # delete — confirms destructive operations
+teach <name> '<cmd>'     # teach cash a natural language alias
+help [command]           # show help
+exit                     # exit
+```
+
+## Natural Language
+
+```bash
+list files               # runs ls -la (exact match)
+list                     # runs ls -la (pattern match)
+lsit feles               # "did you mean list files?" (fuzzy)
+scan my network          # discovers hosts and open ports
+set up my router         # guides through router security check
+check for intrusion      # reviews security logs and monitors
+install nmap             # installs via apt/brew, registers in cash
+```
+
+## Security Commands
+
+```bash
+scan 192.168.1.0/24      # port scan with nmap
+vuln http://target       # web vulnerability scan with nikto
+dirs http://target       # directory discovery with gobuster
+ssl example.com          # SSL certificate inspection
+http example.com         # HTTP header inspection
+```
+
+## Ethical Hacking Toolkit
+
+```bash
+cash install nmap        # install security tools
+cash install nikto
+cash tools               # list installed tools
+learn scan               # explains what scan does + ethical rules
+lab start                # sandboxed practice environment
+arp                      # show devices on local network
+trace google.com         # traceroute
+dns example.com          # DNS lookup
+```
+
+## Shell Features
+
+```bash
+ls | grep src            # pipes
+echo hi > file.txt       # redirects
+FOO=bar command          # environment variables
+sleep 100 &              # background jobs
+jobs                     # list background jobs
+# Tab                    # completion
+# Ctrl+R                 # history search
+```
+
+---
+
+## Security Features
+
+Every command is logged to `~/.cash/audit.db` with SHA-256 hash.
+Tamper detection watches `~/.cash/` — any outside modification is flagged.
+Process monitor detects suspicious processes (nmap, metasploit, chmod +s).
+Network monitor logs every outbound connection.
+Security engine runs on a supervised thread — restarts automatically if it crashes.
+
+---
+
+## Build
+
+**Requirements:** Rust 1.75+, Linux / macOS / WSL2
+
+```bash
+cargo build --release
+cargo test              # 164 tests
 ```
 
 ---
 
 ## Status
 
-Under active development. All 13 modules complete.
+**164 tests passing. Active development.**
 
-| Module | Status |
+| Component | Status |
 |---|---|
-| 1. Scaffold | ✅ |
-| 2. Read-eval loop | ✅ |
-| 3. Executor (fork/exec/pipes) | ✅ |
-| 4. Built-in commands | ✅ |
-| 5. Memory Store | ✅ |
-| 6. Resolver | ✅ |
-| 7. Suggestion Engine | ✅ |
-| 8. Audit Log | ✅ |
-| 9. Tamper Detection | ✅ |
-| 10. Security Engine | ✅ |
-| 11. Agent Platform | ✅ |
-| 12. Marketplace | ✅ |
-| 13. Integration | ✅ |
+| Core shell | ✅ Complete |
+| Security engine | ✅ Complete |
+| Agent platform | ✅ Complete |
+| Marketplace | ✅ Complete |
+| Ethical toolkit | ✅ Complete |
+| Tool manager | ✅ Complete |
+| Tab completion | ✅ Complete |
+| Syntax highlighting | ✅ Complete |
+| AI intent engine | ✅ Complete |
+| Job control | ✅ Complete |
+| WhatsApp alerts | 🔲 Planned |
+| Mac testing | 🔲 In progress |
 
 ---
 
-© Personal Studio Limited — Confidential
+© Personal Studio Limited
