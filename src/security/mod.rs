@@ -151,7 +151,9 @@ impl SecurityEngine {
 // Tamper Watcher
 // ---------------------------------------------------------------------------
 
-const WATCHED: &[&str] = &["audit.db","history.db","memory.db","config.toml"];
+// Only watch files cash does NOT write to during normal operation.
+// audit.db and history.db change on every command — exclude them.
+const WATCHED: &[&str] = &["memory.db","config.toml"];
 
 struct TamperWatcher {
     cash_dir: PathBuf,
@@ -280,11 +282,11 @@ mod tests {
 
     #[test]
     fn tamper_detects_modification() {
-        let (path,_d)=tmp(); let file=path.join("audit.db");
+        let (path,_d)=tmp(); let file=path.join("memory.db");
         std::fs::write(&file,b"original").unwrap();
         let w=TamperWatcher::new(&path);
         std::fs::write(&file,b"tampered").unwrap();
-        let base=w.baseline.lock().unwrap().get("audit.db").cloned().unwrap();
+        let base=w.baseline.lock().unwrap().get("memory.db").cloned().unwrap();
         assert_ne!(base, hash_file(&file).unwrap());
     }
     #[test]
