@@ -14,6 +14,7 @@
 pub mod alert;
 pub mod network_monitor;
 pub mod process_monitor;
+pub mod webhook;
 
 pub use alert::{AlertSystem, AlertLevel};
 pub use network_monitor::NetworkMonitor;

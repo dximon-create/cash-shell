@@ -3,6 +3,7 @@
 pub mod copy;
 pub mod go;
 pub mod help;
+pub mod setup;
 pub mod remove;
 pub mod show;
 pub mod mv;
