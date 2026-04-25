@@ -22,7 +22,7 @@ pub fn run(shell: &mut super::Shell) -> anyhow::Result<()> {
 
         let prompt_visible = visible_len(&prompt_buf);
 
-        let line = match read_line(prompt_visible as u16)? {
+        let line = match read_line(prompt_visible as u16, &shell.store)? {
             InputResult::Line(l) => l,
             InputResult::Interrupted => continue,
             InputResult::Eof => { println!("exit"); break; }
