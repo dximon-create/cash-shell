@@ -1,5 +1,6 @@
 // cash — built-in commands
 
+pub mod agent;
 pub mod copy;
 pub mod go;
 pub mod help;
@@ -32,6 +33,7 @@ pub fn dispatch(stage: &Stage, cwd: &std::path::Path, store: &Store) -> Option<B
         "teach"  => Some(teach::run(stage, store)),
         "help"   => Some(help::run(stage)),
         "setup"  => { setup::run(store); Some(BuiltinResult::Ok) }
+        "agent"  => { agent::run(&stage.args, store); Some(BuiltinResult::Ok) }
         "cash"   => {
             // cash <subcommand> — dispatch subcommands
             match stage.args.first().map(|s| s.as_str()) {

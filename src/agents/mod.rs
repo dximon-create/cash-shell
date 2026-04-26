@@ -1,3 +1,4 @@
+pub mod security_agent;
 // cash — Layer 3: Agent Platform
 //
 // Native runtime for AI agents. Agents are first-class citizens in cash.
