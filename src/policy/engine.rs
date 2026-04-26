@@ -106,7 +106,7 @@ impl PolicyEngine {
         let cmd = action.raw_command.split_whitespace().next().unwrap_or("");
         matches!(cmd,
             // Version control
-            "git" | "gh" | "svn" | "hg" |
+            "cash" | "setup" | "git" | "gh" | "svn" | "hg" |
             // Build tools
             "cargo" | "rustc" | "make" | "cmake" | "gradle" | "mvn" |
             "npm" | "yarn" | "pnpm" | "pip" | "pip3" | "python" | "python3" |

@@ -31,6 +31,18 @@ pub fn dispatch(stage: &Stage, cwd: &std::path::Path, store: &Store) -> Option<B
         "remove" => Some(remove::run(stage, cwd)),
         "teach"  => Some(teach::run(stage, store)),
         "help"   => Some(help::run(stage)),
+        "setup"  => { setup::run(store); Some(BuiltinResult::Ok) }
+        "cash"   => {
+            // cash <subcommand> — dispatch subcommands
+            match stage.args.first().map(|s| s.as_str()) {
+                Some("setup")  => { setup::run(store); Some(BuiltinResult::Ok) }
+                Some("alerts") => { setup::show_config(store); Some(BuiltinResult::Ok) }
+                _ => {
+                    println!("cash commands: setup, alerts");
+                    Some(BuiltinResult::Ok)
+                }
+            }
+        }
         "exit" | "quit" => {
             let code = stage.args.first()
                 .and_then(|s| s.parse::<i32>().ok())

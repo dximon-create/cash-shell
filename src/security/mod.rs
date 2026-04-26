@@ -152,9 +152,10 @@ impl SecurityEngine {
 // Tamper Watcher
 // ---------------------------------------------------------------------------
 
-// Only watch files cash does NOT write to during normal operation.
+// Only watch memory.db — the only file cash does not write to during normal use.
+// config.toml is written by cash setup — exclude it.
 // audit.db and history.db change on every command — exclude them.
-const WATCHED: &[&str] = &["memory.db","config.toml"];
+const WATCHED: &[&str] = &["memory.db"];
 
 struct TamperWatcher {
     cash_dir: PathBuf,

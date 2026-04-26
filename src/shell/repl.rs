@@ -39,7 +39,13 @@ pub fn run(shell: &mut super::Shell) -> anyhow::Result<()> {
 
         let cwd_str = shell.cwd.display().to_string();
 
-        match eval(&pipeline, &shell.cwd, &shell.store, &cfg) {
+        // Disable raw mode while running external commands
+        // so Ctrl+C reaches the child process correctly
+        let _ = crossterm::terminal::disable_raw_mode();
+        let eval_result = eval(&pipeline, &shell.cwd, &shell.store, &cfg);
+        // Raw mode is re-enabled by read_line on next iteration
+
+        match eval_result {
             EvalResult::Ok => {
                 let _ = history::push(&shell.store, &line, &cwd_str, 0, cfg.history_dedup);
                 let _ = history::trim(&shell.store, cfg.history_limit);
