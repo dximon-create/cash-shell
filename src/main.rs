@@ -17,6 +17,7 @@ mod marketplace;
 mod security;
 mod shell;
 mod store;
+mod web;
 
 fn main() -> anyhow::Result<()> {
     // Windows native: warn user and suggest WSL.

@@ -8,3 +8,4 @@ pub mod marketplace;
 pub mod security;
 pub mod shell;
 pub mod store;
+pub mod web;
