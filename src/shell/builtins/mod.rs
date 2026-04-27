@@ -5,6 +5,7 @@ pub mod copy;
 pub mod go;
 pub mod help;
 pub mod setup;
+pub mod explain;
 pub mod remove;
 pub mod show;
 pub mod mv;
@@ -31,7 +32,8 @@ pub fn dispatch(stage: &Stage, cwd: &std::path::Path, store: &Store) -> Option<B
         "move"   => Some(mv::run(stage, cwd)),
         "remove" => Some(remove::run(stage, cwd)),
         "teach"  => Some(teach::run(stage, store)),
-        "help"   => Some(help::run(stage)),
+        "help"    => Some(help::run(stage)),
+        "explain" => { explain::run(stage); Some(BuiltinResult::Ok) }
         "setup"  => { setup::run(store); Some(BuiltinResult::Ok) }
         "agent"  => { agent::run(&stage.args, store); Some(BuiltinResult::Ok) }
         "cash"   => {
