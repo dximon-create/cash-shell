@@ -7,6 +7,7 @@ pub mod help;
 pub mod setup;
 pub mod explain;
 pub mod dashboard;
+pub mod policy;
 pub mod remove;
 pub mod show;
 pub mod mv;
@@ -36,6 +37,7 @@ pub fn dispatch(stage: &Stage, cwd: &std::path::Path, store: &Store) -> Option<B
         "help"    => Some(help::run(stage)),
         "explain" => { explain::run(stage); Some(BuiltinResult::Ok) }
         "dashboard" => { dashboard::run(store); Some(BuiltinResult::Ok) }
+        "policy"    => { policy::run(stage, store); Some(BuiltinResult::Ok) }
         "setup"  => { setup::run(store); Some(BuiltinResult::Ok) }
         "agent"  => { agent::run(&stage.args, store); Some(BuiltinResult::Ok) }
         "cash"   => {
